@@ -1,6 +1,6 @@
 package org.example.calculator;
 
-import calculator.calculate.*;
+import org.example.calculator.calculate.*;
 
 import java.util.List;
 
