@@ -21,7 +21,7 @@ public class ClientRequestHandler implements Runnable {
     @Override
     public void run() {
         /**
-         * Step2 - 사용자 요청이 들어올 때마다 Thread를 새로 생성해서 사용자 요청을 처리하도록 한다.
+         * Step3 - Thread Pool을 적용해 안정적인 서비스가 가능하도록 한다.
          */
         logger.info("[ClientRequestHandler] new Client {} started.", Thread.currentThread().getName());
         try (InputStream in = clientSocket.getInputStream(); OutputStream out = clientSocket.getOutputStream()) {
