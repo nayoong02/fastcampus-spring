@@ -1,6 +1,7 @@
 package org.example.mvc;
 
 import org.example.mvc.controller.Controller;
+import org.example.mvc.controller.RequestMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,13 +33,12 @@ public class DispatcherServlet extends HttpServlet {
 
         try {
             // 핸들러 매핑을 통해 핸들러 찾기
-            Controller handler = rmhm.findHandler(request.getRequestURI());
+            Controller handler = rmhm.findHandler(new HandlerKey(RequestMethod.valueOf(request.getMethod()), request.getRequestURI()));
 
-            // 핸들러에게 작업 위임
+            // "redirect:/users" vs forward
             String viewName = handler.handleRequest(request, response);
 
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewName);
-            requestDispatcher.forward(request, response);
+
         } catch (Exception e) {
             log.error("exception occured: [{}]", e.getMessage(), e);
             throw new ServletException(e);
