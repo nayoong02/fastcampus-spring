@@ -1,8 +1,8 @@
-package org.example.annotation.controller;
+package org.example.controller;
 
 import org.example.annotation.Controller;
 import org.example.annotation.Inject;
-import org.example.annotation.service.UserService;
+import org.example.service.UserService;
 
 @Controller
 public class UserController {

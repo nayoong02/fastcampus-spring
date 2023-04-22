@@ -1,4 +1,4 @@
-package org.example.annotation.service;
+package org.example.service;
 
 import org.example.annotation.Service;
 
