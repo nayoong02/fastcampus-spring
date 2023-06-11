@@ -35,7 +35,7 @@ class ArticleServiceTest {
         // Given
 
         // When
-        Page<ArticleDto> articles = sut.searchArticles(SearchType.TYTLE, "search keyword"); // 제목, 본문, ID, 닉네임, 해시태그
+        Page<ArticleDto> articles = sut.searchArticles(SearchType.TITLE, "search keyword"); // 제목, 본문, ID, 닉네임, 해시태그
 
         // Then
         assertThat(articles).isNotNull();
