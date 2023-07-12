@@ -23,7 +23,7 @@ public class Article extends AuditingFields {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter @ManyToOne(optional = false) private UserAccount userAccount; // 사용자 정보 (ID)
+    @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId") private UserAccount userAccount; // 사용자 정보 (ID)
     @Setter @Column(nullable = false) private String title; // 제목
     @Setter @Column(nullable = false, length = 10000) private String content; // 본문 내용
 
@@ -52,9 +52,8 @@ public class Article extends AuditingFields {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Article article = (Article) o;
-        return id != null && id.equals(article.id); // id가 부여되지 않았으면 동등성 검사 의미 x -> 처리 x
+        if (!(o instanceof Article article)) return false;
+        return id != null && id.equals(article.id);
     }
 
     @Override

@@ -20,7 +20,7 @@ public class ArticleComment extends AuditingFields {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter @ManyToOne(optional = false) private UserAccount userAccount; // 사용자 정보 (ID)
+    @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId") private UserAccount userAccount; // 사용자 정보 (ID)
     @Setter @ManyToOne(optional = false) private Article article; // 게시글 (ID)
     @Setter @Column(nullable = false, length = 500) private String content; // 본문 내용
 
@@ -39,9 +39,8 @@ public class ArticleComment extends AuditingFields {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ArticleComment that = (ArticleComment) o;
-        return id!= null && id.equals(that.id);
+        if (!(o instanceof ArticleComment that)) return false;
+        return id != null && id.equals(that.id);
     }
 
     @Override
